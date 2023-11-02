@@ -71,8 +71,8 @@ public class CircularTimerView extends View {
         backgroundColor = ta.getColor(R.styleable.CircularTimerView_backgroundColor, Color.GRAY);
         progressBackgroundColor = ta.getColor(R.styleable.CircularTimerView_progressBackgroundColor, Color.GRAY);
 
-        strokeWidth = ta.getFloat(R.styleable.CircularTimerView_strokeWidth, 10);
-        strokeWidth = ta.getDimension(R.styleable.CircularTimerView_strokeWidthDimension, strokeWidth);
+        strokeWidth = ta.getFloat(R.styleable.CircularTimerView_progressStrokeWidth, 10);
+        strokeWidth = ta.getDimension(R.styleable.CircularTimerView_progressStrokeWidthDimension, strokeWidth);
         backgroundWidth = ta.getFloat(R.styleable.CircularTimerView_backgroundWidth, 10);
         roundedCorners = ta.getBoolean(R.styleable.CircularTimerView_roundedCorners, false);
         maxValue = ta.getFloat(R.styleable.CircularTimerView_maxValue, 100);
