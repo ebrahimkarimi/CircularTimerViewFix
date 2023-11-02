@@ -85,6 +85,7 @@ public class CircularTimerView extends View {
         startingAngle = ta.getInt(R.styleable.CircularTimerView_startingPoint, 270);
 
         progressBarPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        progressBarPaint.setAntiAlias(true);
         progressBarPaint.setStyle(Paint.Style.FILL);
         progressBarPaint.setColor(progressColor);
         progressBarPaint.setStyle(Paint.Style.STROKE);
@@ -152,6 +153,21 @@ public class CircularTimerView extends View {
 
         mArcBounds.set(mouthInset, mouthInset, mRadius * 2 - mouthInset, mRadius * 2 - mouthInset);
         canvas.drawArc(mArcBounds, 0f, 360f, false, progressBarBackgroundPaint);
+
+
+        progressBarPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        progressBarPaint.setStyle(Paint.Style.FILL);
+        progressBarPaint.setColor(progressColor);
+        progressBarPaint.setStyle(Paint.Style.STROKE);
+        progressBarPaint.setStrokeWidth(strokeWidth);
+        progressBarPaint.setAntiAlias(true);
+        if (roundedCorners) {
+            progressBarPaint.setStrokeCap(Paint.Cap.ROUND);
+        } else {
+            progressBarPaint.setStrokeCap(Paint.Cap.BUTT);
+        }
+        String pc = String.format("#%06X", (0xFFFFFF & progressColor));
+        progressBarPaint.setColor(Color.parseColor(pc));
 
         if (isClockwise) {
             canvas.drawArc(mArcBounds, startingAngle, (drawUpto / getMaxValue() * 360), false, progressBarPaint);
