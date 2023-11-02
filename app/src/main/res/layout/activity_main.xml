@@ -31,6 +31,7 @@
         app:suffix=" sec"
         app:progressText="Time Remaining..."
         app:maxValue="100"
+        app:strokeWidthDimension="10dp"
         app:startingPoint="bottom"
         app:progressTextColor="#eee"/>
 

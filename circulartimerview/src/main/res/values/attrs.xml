@@ -5,6 +5,7 @@
         <attr name="backgroundColor" format="color"/>
         <attr name="progressBackgroundColor" format="color"/>
         <attr name="strokeWidthDimension" format="dimension"/>
+        <attr name="strokeWidth" format="float"/>
         <attr name="backgroundWidth" format="float"/>
         <attr name="roundedCorners" format="boolean"/>
         <attr name="maxValue" format="float"/>

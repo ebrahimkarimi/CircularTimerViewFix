@@ -34,7 +34,7 @@ public class CircularTimerView extends View {
     private int progressColor;
     private int progressBackgroundColor;
     private int backgroundColor;
-    private float strokeWidthDimension;
+    private float strokeWidth;
     private float backgroundWidth;
     private boolean roundedCorners;
     private float maxValue;
@@ -71,7 +71,8 @@ public class CircularTimerView extends View {
         backgroundColor = ta.getColor(R.styleable.CircularTimerView_backgroundColor, Color.GRAY);
         progressBackgroundColor = ta.getColor(R.styleable.CircularTimerView_progressBackgroundColor, Color.GRAY);
 
-        strokeWidthDimension = ta.getFloat(R.styleable.CircularTimerView_strokeWidthDimension, 10);
+        strokeWidth = ta.getFloat(R.styleable.CircularTimerView_strokeWidth, 10);
+        strokeWidth = ta.getDimension(R.styleable.CircularTimerView_strokeWidthDimension, strokeWidth);
         backgroundWidth = ta.getFloat(R.styleable.CircularTimerView_backgroundWidth, 10);
         roundedCorners = ta.getBoolean(R.styleable.CircularTimerView_roundedCorners, false);
         maxValue = ta.getFloat(R.styleable.CircularTimerView_maxValue, 100);
@@ -87,7 +88,7 @@ public class CircularTimerView extends View {
         progressBarPaint.setStyle(Paint.Style.FILL);
         progressBarPaint.setColor(progressColor);
         progressBarPaint.setStyle(Paint.Style.STROKE);
-        progressBarPaint.setStrokeWidth(strokeWidthDimension * getResources().getDisplayMetrics().density);
+        progressBarPaint.setStrokeWidth(strokeWidth);
         if (roundedCorners) {
             progressBarPaint.setStrokeCap(Paint.Cap.ROUND);
         } else {
@@ -250,13 +251,18 @@ public class CircularTimerView extends View {
         invalidate();
     }
 
-    public void setStrokeWidthDimension(float width) {
-        strokeWidthDimension = width;
+    public void setStrokeWidth(float width) {
+        strokeWidth = width;
+        progressBarPaint.setStrokeWidth(strokeWidth);
         invalidate();
     }
 
-    public float getStrokeWidthDimension() {
-        return strokeWidthDimension;
+    public void setStrokeWidthDimension(float dimension){
+        setStrokeWidth(dimension* getResources().getDisplayMetrics().density);
+    }
+
+    public float getStrokeWidth() {
+        return strokeWidth;
     }
 
     public void setBackgroundWidth(float width) {
